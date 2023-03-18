@@ -1,22 +1,18 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import { getSortedSnapshotPaths } from '../lib/snapshots';
-import Snapshot from '../components/snapshot';
+import Link from 'next/link';
+import { DateTime } from 'luxon';
 
 export async function getServerSideProps(context) {
-  let sorted;
+  const today = DateTime.local()
   let motionUrl = process.env.MOTION_URL;
-
-  try {
-    sorted = await getSortedSnapshotPaths();
-  } catch (err) {
-    console.error(err);
-  }
 
   return {
     props: {
-      sorted: await getSortedSnapshotPaths(),
-      motionUrl
+      motionUrl,
+      year: today.year,
+      month: today.month,
+      day: today.day
     }
   };
 }
@@ -25,26 +21,21 @@ export default function Home(props) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Clavio Cats</title>
+        <title>Cat Cam - Live</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1 className={styles.title}>
-          Clavio Cat Watch
+          Cat Cam
         </h1>
+
+        <h2 className={styles.description}>
+          <Link href={`/gallery/${props.year}/${props.month}/${props.day}`}>Gallery</Link>
+        </h2>
 
         <div className={styles.card}>
           <img width={960} height={720} src={props.motionUrl}></img>
-        </div>
-
-        <div className={styles.grid}>
-          {
-            props.sorted.map(snap => (
-              <Snapshot key={snap.name} name={snap.name} path={snap.path} time={snap.time} width={400} height={300} />
-            ))
-          }
-
         </div>
       </main>
 
