@@ -1,9 +1,11 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+:root {
+  --primary-color: rgb(0, 57, 80);
+  --secondary-color: rgb(16, 116, 156);
+  --tertiary-color: rgb(228, 226, 100);
+  --background-light: rgb(202, 202, 202);
+  --font-dark: rgb(19, 19, 19);
+  --font-light: rgb(240, 240, 240);
+  --font-primary: Verdana, Arial, sans-serif
 }
 
 a {
@@ -12,27 +14,5 @@ a {
 }
 
 * {
-  box-sizing: border-box;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-h1,
-h2,
-p,
-ul {
-  margin: 0;
-}
-
-ul {
-  padding: 0;
-  list-style: none;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  font-weight: bold;
+  font-family: var(--font-primary);
 }

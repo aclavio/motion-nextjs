@@ -1,0 +1,18 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--background-light);
+}
+
+.container>header {
+    background-color: var(--primary-color);
+    color: var(--font-light);
+    font-size: 250%;
+    font-weight: bold;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+}
